@@ -15,7 +15,7 @@ import model.Account;
  */
 public class AccountMgnWorkAreaJPanel extends javax.swing.JPanel {
 
-    
+    JPanel userProcessContainer;
     AccountDirectory accountDirectory;
     
     public AccountMgnWorkAreaJPanel(JPanel container,AccountDirectory directory) {
