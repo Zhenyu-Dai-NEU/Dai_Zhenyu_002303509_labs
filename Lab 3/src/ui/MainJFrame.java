@@ -148,7 +148,5 @@ public class MainJFrame extends javax.swing.JFrame {
         newAccount.setRoutingNumber("4455667788");
         newAccount.setBankName("Bank of the America");
         newAccount.setBalance(2500);
-        
-        
 }
 }

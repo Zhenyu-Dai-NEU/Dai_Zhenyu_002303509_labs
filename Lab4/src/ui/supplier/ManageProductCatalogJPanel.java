@@ -11,7 +11,6 @@ import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
-
 /**
  *
  * @author Rushabh
@@ -60,11 +59,11 @@ public class ManageProductCatalogJPanel extends javax.swing.JPanel {
         lblTitle = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblProducts = new javax.swing.JTable();
-        btnView = new javax.swing.JButton();
         btnCreate = new javax.swing.JButton();
         btnSearch = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
         imgLogo = new javax.swing.JLabel();
+        btnView = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -82,13 +81,6 @@ public class ManageProductCatalogJPanel extends javax.swing.JPanel {
             }
         ));
         jScrollPane1.setViewportView(tblProducts);
-
-        btnView.setText("View Details...");
-        btnView.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnViewActionPerformed(evt);
-            }
-        });
 
         btnCreate.setText("Add Product...");
         btnCreate.addActionListener(new java.awt.event.ActionListener() {
@@ -113,6 +105,13 @@ public class ManageProductCatalogJPanel extends javax.swing.JPanel {
 
         imgLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
+        btnView.setText("View Product");
+        btnView.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -125,9 +124,9 @@ public class ManageProductCatalogJPanel extends javax.swing.JPanel {
                         .addComponent(btnSearch)
                         .addGap(18, 18, 18)
                         .addComponent(btnCreate)
-                        .addGap(18, 18, 18)
+                        .addGap(27, 27, 27)
                         .addComponent(btnView)
-                        .addGap(18, 18, 18)
+                        .addGap(39, 39, 39)
                         .addComponent(btnDelete))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 534, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -152,26 +151,12 @@ public class ManageProductCatalogJPanel extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnDelete)
-                    .addComponent(btnView)
                     .addComponent(btnCreate)
-                    .addComponent(btnSearch))
+                    .addComponent(btnSearch)
+                    .addComponent(btnView))
                 .addGap(361, 361, 361))
         );
     }// </editor-fold>//GEN-END:initComponents
-    private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
-        
-        int row = tblProducts.getSelectedRow();
-        if(row < 0){
-            JOptionPane.showMessageDialog(null, "Please select a row from the table first", "Warning", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-        Product selectProduct = (Product) tblProducts.getValueAt(row, 0);
-        ViewProductDetailJPanel vpdjp = new ViewProductDetailJPanel(workArea, selectProduct);
-        workArea.add("ViewProductDetailJPanelSupplier",vpdjp);
-        CardLayout layout = (CardLayout) workArea.getLayout();
-        layout.next(workArea);
-        
-    }//GEN-LAST:event_btnViewActionPerformed
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
         CreateNewProductJPanel cnpjp = new CreateNewProductJPanel(workArea, supplier);
@@ -199,6 +184,21 @@ public class ManageProductCatalogJPanel extends javax.swing.JPanel {
         refreshTable();
         
     }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
+
+        int row = tblProducts.getSelectedRow();      
+        if(row < 0){
+            JOptionPane.showMessageDialog(null, "Please select a row from the table first", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        Product selectProduct = (Product) tblProducts.getValueAt(row, 0);
+        ViewProductDetailJPanel vpdjp = new ViewProductDetailJPanel(workArea, selectProduct);
+        workArea.add("ViewProductDetailJPanelSupplier",vpdjp);
+        CardLayout layout = (CardLayout) workArea.getLayout();
+        layout.next(workArea);
+    }//GEN-LAST:event_btnViewActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCreate;
     private javax.swing.JButton btnDelete;

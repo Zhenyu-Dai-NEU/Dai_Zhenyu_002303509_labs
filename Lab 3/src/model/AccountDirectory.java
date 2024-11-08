@@ -23,7 +23,6 @@ public class AccountDirectory {
     }
     
     public AccountDirectory(){
-    
         this.accounts = new ArrayList<Account>();
     }
     

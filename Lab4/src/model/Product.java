@@ -17,7 +17,7 @@ public class Product {
     private int price;
     private int id;
 
-    private ArrayList<Feature>features;
+    private ArrayList<Feature> features;
     private static int count = 0;
     
     public Product() {
@@ -62,19 +62,8 @@ public class Product {
     
 
     public Feature addNewFeatures() {
-    Product defaultProduct = this;  
-    String defaultName = "Default Feature Name";
-    Object defaultValue = "Default Value";
-    return addNewFeatures(defaultProduct, defaultName, defaultValue).get(0);
-}
-
-    private ArrayList<Feature> addNewFeatures(Product product, String nameString, Object value) {
-    ArrayList<Feature> fs = new ArrayList<>();
-
-    Feature newFeature = new Feature(product, nameString, value);
-    fs.add(newFeature);  
-    features.addAll(fs);  
-
+    Feature fs = new Feature(this);
+    features.add(fs);
     return fs;  
 }
 
